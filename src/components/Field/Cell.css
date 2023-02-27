@@ -1,0 +1,19 @@
+.cell {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url('../../../public/img/field_icons/field.png');
+  border: none;
+}
+
+.cell:hover {
+  cursor: pointer;
+}
+
+.opened {
+  background-image: url('../../../public/img/field_icons/field_opend.png');
+}
+
+.flagged {
+  background-image: url('../../../public/img/field_icons/flag.png');
+}

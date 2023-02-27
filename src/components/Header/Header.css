@@ -1,0 +1,8 @@
+.header {
+  display: flex;
+  justify-content: center;
+  width: 256px;
+  background-color: #c0c0c0;
+  border: 10px solid #bdbdbd;
+  border-bottom: 5px solid #bdbdbd;
+}
