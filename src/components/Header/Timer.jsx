@@ -7,7 +7,6 @@ import './Timer.css';
 const Timer = () => {
   const {
     seconds,
-    minutes,
   } = useStopwatch({ autoStart: true });
 
   const path1 = `./img/timer/number_${seconds > 9 ? `${seconds % 10}` : `${seconds}`}.png`;
@@ -17,7 +16,6 @@ const Timer = () => {
   return (
     <div className="timer">
       <div style={{ fontSize: '20px' }}>
-        <span className="minutes">{minutes}</span>
         <span className="seconds">
           <img src={path3} alt="timer" />
           <img src={path2} alt="timer" />
