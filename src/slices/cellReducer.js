@@ -22,11 +22,16 @@ const cellSlice = createSlice({
     changeCellStatus: (state, action) => {
       console.log(action.payload);
     },
+    getCellStatus: (state, action) => {
+      console.log(action.payload);
+    },
   },
 });
 
 export const {
   test,
+  changeCellStatus,
+  getCellStatus,
 } = cellSlice.actions;
 
 export default cellSlice.reducer;
