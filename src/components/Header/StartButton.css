@@ -8,3 +8,7 @@ button {
 button:hover {
   cursor: pointer;
 }
+
+.lose {
+  background-image: url('../../../public/img/smile/loser.png');
+}
