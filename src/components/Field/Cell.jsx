@@ -40,6 +40,9 @@ const Cell = (props) => {
     opened: cell.status === 'opened',
     flagged: cell.status === 'flagged',
     question: cell.status === 'question',
+    armed: cell.status === 'opened' && cell.mined,
+    mine: cell.status === 'mine',
+    disarmed: cell.status === 'disarmed',
   });
 
   return (
