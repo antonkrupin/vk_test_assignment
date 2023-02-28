@@ -31,6 +31,7 @@ const fieldFilling = (size, mineCounter) => {
       status: 'closed',
     });
     if (i % size === 0) {
+      tempLine.unshift(i / size);
       field.push(tempLine);
       tempLine = [];
     }
