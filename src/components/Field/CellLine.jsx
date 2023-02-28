@@ -5,17 +5,12 @@ import Cell from './Cell';
 import './CellLine.css';
 
 const CellLine = (props) => {
-  const { id, size } = props;
+  const { line } = props;
 
-  const line = [];
-
-  for (let i = 0; i < size; i += 1) {
-    line.push({ id: [id, i], mined: false, clicked: false });
-  }
   return (
     <div className="cellLine">
-      {line.map((c) => (
-        <Cell key={c.id[1]} clicked={c.clicked} />
+      {line.map((cell) => (
+        <Cell key={cell.id} id={cell.id} clicked={cell.clicked} />
       ))}
     </div>
   );
