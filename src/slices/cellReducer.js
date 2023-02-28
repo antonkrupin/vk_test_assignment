@@ -18,22 +18,36 @@ const cellSlice = createSlice({
   },
   reducers: {
     startGame: (state) => {
-      state.gameStatus = true;
+      state.gameStatus = 'start';
     },
     changeCellStatus: (state, action) => {
       const { id, type } = action.payload;
       state.field.flat().forEach((cell) => {
         if (cell.id === id && type === 'click') {
           cell.status = 'opened';
+          if (cell.mined) {
+            state.gameStatus = 'lose';
+            state.mined.forEach((elem) => {
+              state.field.flat().forEach((c) => {
+                if (elem !== id) {
+                  if (c.id === elem) {
+                    c.status = c.status === 'flagged' ? 'disarmed' : 'mine';
+                  }
+                }
+              });
+            });
+          }
         }
         if (cell.id === id && type === 'contextmenu') {
           switch (cell.status) {
             case 'closed': {
               cell.status = 'flagged';
+              state.mineCounter -= 1;
               break;
             }
             case 'flagged': {
               cell.status = 'question';
+              state.mineCounter += 1;
               break;
             }
             default:
