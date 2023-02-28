@@ -21,3 +21,15 @@
 .question {
 	background-image: url('../../../public/img/field_icons/question.png');
 }
+
+.armed {
+  background-image: url('../../../public/img/field_icons/mine_armed.png');
+}
+
+.mine {
+  background-image: url('../../../public/img/field_icons/mine.png');
+}
+
+.disarmed {
+  background-image: url('../../../public/img/field_icons/mine_disarmed.png');
+}
