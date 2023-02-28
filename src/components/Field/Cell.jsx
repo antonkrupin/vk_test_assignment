@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+// import { useSelector, useDispatch } from 'react-redux';
+
+// import { getCellStatus, changeCellStatus } from '../../slices/cellReducer';
+
 import './Cell.css';
 
 const Cell = (props) => {
-  const { clicked } = props;
+  const { id, clicked } = props;
+  // const dispatch = useDispatch();
 
   const [isClicked, setIsClicked] = useState(clicked);
 
@@ -20,6 +26,7 @@ const Cell = (props) => {
 
   return (
     <button
+      id={id}
       type="button"
       aria-label="cell"
       className={`cell ${isClicked && 'opened'} ${isRightClicked && 'flagged'}`}
