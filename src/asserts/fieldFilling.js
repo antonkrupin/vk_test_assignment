@@ -18,15 +18,12 @@ const generateMinedCells = (size, mineCounter) => {
 
 // генерирует initialState
 const fieldFilling = (size, mineCounter) => {
-  const initialState = {};
-
   const minedCells = generateMinedCells(size, mineCounter);
 
-  initialState.mined = minedCells;
-  initialState.mineCounter = minedCells.length;
-  initialState.field = [];
-
+  const mined = minedCells;
+  const field = [];
   let tempLine = [];
+
   for (let i = 1; i <= size ** 2; i += 1) {
     tempLine.push({
       id: i,
@@ -34,12 +31,12 @@ const fieldFilling = (size, mineCounter) => {
       status: 'closed',
     });
     if (i % size === 0) {
-      initialState.field.push(tempLine);
+      field.push(tempLine);
       tempLine = [];
     }
   }
 
-  return initialState;
+  return { mined, mineCounter: minedCells.length, field };
 };
 
 export default fieldFilling;

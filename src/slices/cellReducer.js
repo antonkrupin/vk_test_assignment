@@ -6,13 +6,20 @@ import fieldFilling from '../asserts/fieldFilling';
 const fieldSize = 16;
 const mineQuantity = 40;
 
-const initialState = fieldFilling(fieldSize, mineQuantity);
+const { mined, mineCounter, field } = fieldFilling(fieldSize, mineQuantity);
 
 const cellSlice = createSlice({
   name: 'cell',
-  initialState,
+  initialState: {
+    mined,
+    mineCounter,
+    field,
+  },
   reducers: {
     test: (state, action) => {
+      console.log(action.payload);
+    },
+    changeCellStatus: (state, action) => {
       console.log(action.payload);
     },
   },
