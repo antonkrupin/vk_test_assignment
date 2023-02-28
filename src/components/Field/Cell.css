@@ -17,3 +17,7 @@
 .flagged {
   background-image: url('../../../public/img/field_icons/flag.png');
 }
+
+.question {
+	background-image: url('../../../public/img/field_icons/question.png');
+}
