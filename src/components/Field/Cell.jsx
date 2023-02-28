@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
 
-import { changeCellStatus } from '../../slices/cellReducer';
+import { startGame, changeCellStatus } from '../../slices/cellReducer';
 
 import './Cell.css';
 
@@ -14,9 +14,13 @@ const Cell = (props) => {
   const dispatch = useDispatch();
 
   const cells = useSelector((state) => state.cell.field);
+  const gameStatus = useSelector((state) => state.cell.gameStatus);
   const [cell] = cells.flat().filter((c) => c.id === id);
 
   const clickHandler = (e) => {
+    if (!gameStatus) {
+      dispatch(startGame());
+    }
     if (cell.status === 'closed') {
       dispatch(changeCellStatus({ id, type: e.type }));
     }
@@ -24,6 +28,9 @@ const Cell = (props) => {
 
   const rightClickHandler = (e) => {
     e.preventDefault(e);
+    if (!gameStatus) {
+      dispatch(startGame());
+    }
     if (cell.status !== 'opened') {
       dispatch(changeCellStatus({ id, type: e.type }));
     }
