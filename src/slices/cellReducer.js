@@ -20,7 +20,26 @@ const cellSlice = createSlice({
       console.log(action.payload);
     },
     changeCellStatus: (state, action) => {
-      console.log(action.payload);
+      const { id, type } = action.payload;
+      state.field.flat().forEach((cell) => {
+        if (cell.id === id && type === 'click') {
+          cell.status = 'opened';
+        }
+        if (cell.id === id && type === 'contextmenu') {
+          switch (cell.status) {
+            case 'closed': {
+              cell.status = 'flagged';
+              break;
+            }
+            case 'flagged': {
+              cell.status = 'question';
+              break;
+            }
+            default:
+              cell.status = 'closed';
+          }
+        }
+      });
     },
     getCellStatus: (state, action) => {
       console.log(action.payload);
