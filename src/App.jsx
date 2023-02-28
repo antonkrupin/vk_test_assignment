@@ -6,10 +6,10 @@ import Field from './components/Field/Field';
 import './App.css';
 
 const App = () => {
-  const test = '1';
+  const title = 'Сапер';
   return (
     <div className="main">
-      <h1>{test}</h1>
+      <h1>{title}</h1>
       <Header />
       <Field size={16} />
     </div>
