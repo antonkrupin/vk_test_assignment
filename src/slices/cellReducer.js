@@ -11,13 +11,14 @@ const { mined, mineCounter, field } = fieldFilling(fieldSize, mineQuantity);
 const cellSlice = createSlice({
   name: 'cell',
   initialState: {
+    gameStatus: null,
     mined,
     mineCounter,
     field,
   },
   reducers: {
-    test: (state, action) => {
-      console.log(action.payload);
+    startGame: (state) => {
+      state.gameStatus = true;
     },
     changeCellStatus: (state, action) => {
       const { id, type } = action.payload;
@@ -48,7 +49,7 @@ const cellSlice = createSlice({
 });
 
 export const {
-  test,
+  startGame,
   changeCellStatus,
   getCellStatus,
 } = cellSlice.actions;
