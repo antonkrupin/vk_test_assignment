@@ -1,14 +1,20 @@
 button {
   width: 26px;
   height: 26px;
-  background-image: url('../../../public/img/smile/happy.png');
   border: none;
 }
 
 button:hover {
   cursor: pointer;
 }
+.start {
+	background-image: url('../../../public/img/smile/happy.png');
+}
 
 .lose {
   background-image: url('../../../public/img/smile/loser.png');
+}
+
+.waiting {
+	background-image: url('../../../public/img/smile/shocked.png');
 }
