@@ -9,7 +9,7 @@ const generateMinedCells = (size, mineCounter) => {
   while (minedCells.length < mineCounter) {
     const temp = getRandomNumber(size ** 2);
     if (minedCells.indexOf(temp) === -1) {
-      minedCells.push(temp);
+      minedCells.push(temp === 0 ? 1 : temp);
     }
   }
   minedCells.sort((a, b) => a - b);
