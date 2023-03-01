@@ -5,12 +5,12 @@ import Cell from './Cell';
 import './CellLine.css';
 
 const CellLine = (props) => {
-  const { line } = props;
+  const { id, line } = props;
 
   return (
-    <div className="cellLine">
+    <div className="cellLine" id={id}>
       {line.map((cell) => (
-        <Cell key={cell.id} id={cell.id} clicked={cell.clicked} />
+        <Cell key={cell.id} id={cell.id} lineId={id} clicked={cell.clicked} />
       ))}
     </div>
   );
