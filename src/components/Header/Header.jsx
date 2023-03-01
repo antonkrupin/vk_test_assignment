@@ -14,8 +14,8 @@ const Header = () => {
     <div className="header">
       <Counter />
       <StartButton />
-      {gameStatus === 'start' && <Timer start={gameStatus} />}
-      {gameStatus !== 'start' && (
+      {(gameStatus === 'start' || gameStatus === 'waiting') && <Timer start={gameStatus} /> }
+      {(gameStatus !== 'start' && gameStatus !== 'waiting') && (
         <div>
           <img src="./img/timer/number_0.png" alt="timer" />
           <img src="./img/timer/number_0.png" alt="timer" />
