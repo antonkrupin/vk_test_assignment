@@ -45,10 +45,6 @@ const Cell = (props) => {
     }
   };
 
-  const mouseLeaveHandler = () => {
-    dispatch(changeGameStatus('start'));
-  };
-
   const className = cn('cell', {
     opened: cell.status === 'opened',
     flagged: cell.status === 'flagged',
@@ -67,7 +63,6 @@ const Cell = (props) => {
       onClick={clickHandler}
       onMouseDown={mouseDownHandler}
       onContextMenu={rightClickHandler}
-      onMouseLeave={mouseLeaveHandler}
     />
   );
 };
