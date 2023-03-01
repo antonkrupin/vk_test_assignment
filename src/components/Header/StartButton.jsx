@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import cn from 'classnames';
@@ -9,6 +10,7 @@ const StartButton = () => {
 
   const className = cn('start', {
     lose: gameStatus === 'lose',
+    waiting: gameStatus === 'waiting',
   });
 
   return (
