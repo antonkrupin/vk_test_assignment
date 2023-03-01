@@ -11,7 +11,7 @@ const App = () => {
     <div className="main">
       <h1>{title}</h1>
       <Header />
-      <Field size={16} />
+      <Field />
     </div>
   );
 };
