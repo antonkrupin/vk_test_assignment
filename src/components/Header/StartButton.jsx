@@ -13,8 +13,13 @@ const StartButton = () => {
     waiting: gameStatus === 'waiting',
   });
 
+  const reloadPage = () => {
+    window.location.reload();
+  };
+
   return (
     <button
+      onClick={reloadPage}
       className={className}
       type="button"
       aria-label="start-button"
