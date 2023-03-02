@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
 
-import { changeGameStatus, changeCellStatus } from '../../slices/cellReducer';
+import { changeGameStatus, changeCellStatus, changeNearestCellsStatus } from '../../slices/cellReducer';
 
 import './Cell.css';
 
@@ -25,6 +25,7 @@ const Cell = (props) => {
     if (cell.status === 'closed') {
       dispatch(changeGameStatus('start'));
       dispatch(changeCellStatus({ id, type: e.type }));
+      dispatch(changeNearestCellsStatus({ id, lineId }));
     }
   };
 

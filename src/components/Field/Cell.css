@@ -33,3 +33,34 @@
 .disarmed {
   background-image: url('../../../public/img/field_icons/mine_disarmed.png');
 }
+
+.mine_1 {
+	background-image: url('../../../public/img/field_icons/number_1.png');
+}
+.mine_2 {
+	background-image: url('../../../public/img/field_icons/number_2.png');	
+}
+
+.mine_3 {
+	background-image: url('../../../public/img/field_icons/number_3.png');	
+}
+
+.mine_4 {
+	background-image: url('../../../public/img/field_icons/number_4.png');	
+}
+
+.mine_5 {
+	background-image: url('../../../public/img/field_icons/number_5.png');	
+}
+
+.mine_6 {
+	background-image: url('../../../public/img/field_icons/number_6.png');	
+}
+
+.mine_7 {
+	background-image: url('../../../public/img/field_icons/number_7.png');	
+}
+
+.mine_8 {
+	background-image: url('../../../public/img/field_icons/number_8.png');	
+}
