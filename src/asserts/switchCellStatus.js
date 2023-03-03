@@ -11,6 +11,8 @@ export const leftClickHandler = (cell, id, state) => {
         }
       });
     });
+  } else {
+    cell.marked = state.tempMinedCells.length;
   }
 };
 
@@ -31,7 +33,8 @@ export const rightClickHandler = (cell, state) => {
   }
 };
 
-export const checkNearestCells = (id, fieldSize, lineId) => {
+// eslint-disable-next-line consistent-return
+export const getNearestCellsId = (id, fieldSize, lineId) => {
   /* const numbers = [];
   numbers.push(id - fieldSize);
   numbers.push(id - fieldSize - 1);
@@ -44,9 +47,10 @@ export const checkNearestCells = (id, fieldSize, lineId) => {
   console.log('numbers', numbers);
   const test = numbers.filter((number) => number > 0);
   return test.sort((a, b) => a - b); */
+  const numbers = [];
   if (id % fieldSize !== 1 && id % fieldSize !== 0) {
     if (lineId !== 1 && lineId !== fieldSize) {
-      const numbers = [];
+      // const numbers = [];
       numbers.push(id - fieldSize);
       numbers.push(id - fieldSize - 1);
       numbers.push(id + 1);
@@ -58,7 +62,7 @@ export const checkNearestCells = (id, fieldSize, lineId) => {
       return numbers.sort((a, b) => a - b);
     }
     if (lineId === 1) {
-      const numbers = [];
+      // const numbers = [];
       numbers.push(id + 1);
       numbers.push(id + fieldSize + 1);
       numbers.push(id + fieldSize);
@@ -67,7 +71,7 @@ export const checkNearestCells = (id, fieldSize, lineId) => {
       return numbers.sort((a, b) => a - b);
     }
     if (lineId === fieldSize) {
-      const numbers = [];
+      // const numbers = [];
       numbers.push(id - fieldSize);
       numbers.push(id - fieldSize - 1);
       numbers.push(id + 1);
@@ -78,19 +82,19 @@ export const checkNearestCells = (id, fieldSize, lineId) => {
   }
   if (id % fieldSize === 1) {
     if (lineId === 1) {
-      const numbers = [];
+      // const numbers = [];
       numbers.push(id + 1);
       numbers.push(id + fieldSize + 1);
       numbers.push(id + fieldSize);
       return numbers.sort((a, b) => a - b);
     } if (lineId === fieldSize) {
-      const numbers = [];
+      // const numbers = [];
       numbers.push(id - fieldSize);
       numbers.push(id - fieldSize + 1);
       numbers.push(id + 1);
       return numbers.sort((a, b) => a - b);
     }
-    const numbers = [];
+    // const numbers = [];
     numbers.push(id - fieldSize);
     numbers.push(id - fieldSize + 1);
     numbers.push(id + 1);
@@ -100,19 +104,19 @@ export const checkNearestCells = (id, fieldSize, lineId) => {
   }
   if (id % fieldSize === 0) {
     if (lineId === 1) {
-      const numbers = [];
+      // const numbers = [];
       numbers.push(id + fieldSize);
       numbers.push(id + fieldSize - 1);
       numbers.push(id - 1);
       return numbers.sort((a, b) => a - b);
     } if (lineId === fieldSize) {
-      const numbers = [];
+      // const numbers = [];
       numbers.push(id - fieldSize);
       numbers.push(id - 1);
       numbers.push(id - fieldSize - 1);
       return numbers.sort((a, b) => a - b);
     }
-    const numbers = [];
+    // const numbers = [];
     numbers.push(id - fieldSize);
     numbers.push(id + fieldSize);
     numbers.push(id + fieldSize - 1);

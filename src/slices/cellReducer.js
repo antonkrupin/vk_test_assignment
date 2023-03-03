@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import fieldFilling from '../asserts/fieldFilling';
-import { leftClickHandler, rightClickHandler, checkNearestCells } from '../asserts/switchCellStatus';
+import { leftClickHandler, rightClickHandler, getNearestCellsId } from '../asserts/switchCellStatus';
 
 const fieldSize = 16;
 const mineQuantity = 40;
@@ -17,7 +17,8 @@ const cellSlice = createSlice({
     mineCounter,
     field,
     openedCells: [],
-    check: [],
+    tempMinedCells: [],
+    temp: [],
   },
   reducers: {
     changeGameStatus: (state, action) => {
@@ -36,19 +37,24 @@ const cellSlice = createSlice({
     },
     changeNearestCellsStatus: (state, action) => {
       const { id, lineId } = action.payload;
-      const cellsId = checkNearestCells(id, fieldSize, lineId);
+      const cellsId = getNearestCellsId(id, fieldSize, lineId);
+      state.tempMinedCells = [];
       cellsId.forEach((cellId) => {
         state.field.flat().forEach((elem) => {
-          if (elem.id === cellId && !elem.mined) {
-            elem.status = 'opened';
+          if (elem.id === cellId && elem.mined) {
+            state.tempMinedCells.push(elem);
           }
         });
       });
-      cellsId.forEach((cellId) => {
-        // eslint-disable-next-line no-undef, no-multi-assign
-        const [temp] = state.field.flat().filter((elem) => elem.id === cellId && elem.mined);
-        state.check.push(temp);
-      });
+      if (state.tempMinedCells.length === 0) {
+        cellsId.forEach((cellId) => {
+          state.field.flat().forEach((elem) => {
+            if (elem.id === cellId && !elem.mined) {
+              elem.status = 'opened';
+            }
+          });
+        });
+      }
     },
     getCellStatus: (state, action) => {
       console.log(action.payload);
@@ -61,6 +67,7 @@ export const {
   changeCellStatus,
   changeNearestCellsStatus,
   getCellStatus,
+  newChange,
 } = cellSlice.actions;
 
 export default cellSlice.reducer;

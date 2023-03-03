@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -5,7 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
 
-import { changeGameStatus, changeCellStatus, changeNearestCellsStatus } from '../../slices/cellReducer';
+import {
+  changeGameStatus,
+  changeCellStatus,
+  changeNearestCellsStatus,
+} from '../../slices/cellReducer';
 
 import './Cell.css';
 
@@ -18,14 +23,13 @@ const Cell = (props) => {
   const [cell] = cells.flat().filter((c) => c.id === id);
 
   const clickHandler = (e) => {
-    console.log(lineId);
     if (!gameStatus) {
       dispatch(changeGameStatus('start'));
     }
     if (cell.status === 'closed') {
       dispatch(changeGameStatus('start'));
-      dispatch(changeCellStatus({ id, type: e.type }));
       dispatch(changeNearestCellsStatus({ id, lineId }));
+      dispatch(changeCellStatus({ id, type: e.type }));
     }
   };
 
@@ -53,6 +57,14 @@ const Cell = (props) => {
     armed: cell.status === 'opened' && cell.mined,
     mine: cell.status === 'mine',
     disarmed: cell.status === 'disarmed',
+    mine_1: cell.marked === 1,
+    mine_2: cell.marked === 2,
+    mine_3: cell.marked === 3,
+    mine_4: cell.marked === 4,
+    mine_5: cell.marked === 5,
+    mine_6: cell.marked === 6,
+    mine_7: cell.marked === 7,
+    mine_8: cell.marked === 8,
   });
 
   return (
